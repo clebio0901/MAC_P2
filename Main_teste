@@ -1,0 +1,11 @@
+from funcoesArvore import Pessoa
+
+p1 = Pessoa('Clebio')
+p2 = Pessoa('Taciana')
+p3 = Pessoa('Luis')
+
+p1.addFilho(p3)
+p2.addFilho(p3)
+
+p1.mostrarFamilha()
+p2.mostrarFamilha()
