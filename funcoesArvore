@@ -1,0 +1,24 @@
+class Pessoa:
+   def __init__(self, nome): #inicializando o objeto com o init passando o nome como unico atribulto
+      self.nome = nome
+      self.pais = [] #criando uma lista de posiveis pais do objeto
+      self.filhos = [] #criando uma lista com posiveis filhos
+
+   def addPai(self, pai): #função para adicionar o pai a um objeto
+    if pai not in self.pais: #verificando se o pai ou mãe já esta na lista de pais 
+      self.pais.append(pai)  #adicionando como pai(pai) do objeto(self)
+      pai.filhos.append(self)  #adicionando o objeto(self) como filho de (pai)
+       
+   def addFilho(self, filho): #função para adicionar o filho a um objeto
+      if filho not in self.filhos: #verificando se o objeto já não tem o mesmo filho na lista
+        self.filhos.append(filho) #adicionando ao objeto um filho na lista do objeto(o pai)
+        filho.pais.append(self) #adicionando ou filho como o pai (o objeto)
+
+   
+   def mostrarFamilha(self): #mostra familha  com recursividade  
+     print( f"- {self.nome}")
+     for filho in self.filhos:
+        print(end='  ') 
+        filho.mostrarFamilha()
+   
+        
