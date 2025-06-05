@@ -1,84 +1,24 @@
-#https://www.canva.com/design/DAGpUbdt6t0/urMU5C9JO0mE6JgqD8H9NA/edit?utm_content=DAGpUbdt6t0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
-#Árvore de decisoes 
-
-diagnosticos = []
-print('\n\033[1;32m------PRE-DIAGNOSTICO MEDICO------\033[m')
-
-
-def repousar():
-    print('O paciente deve \033[1;32mrepousar\033[m e \033[1;32mtomar medicação!\033[m')
-
-def perguntar_sintoma(pergunta, sintoma):
-    resposta = input(pergunta)
-    if resposta == 's':
-        sintomas.append(sintoma)
+import funcoes
 
 while True:
-    sintomas = []
-    doenca = input('Você está sentindo alguma coisa [s/n]: ') 
-    if doenca == 's':    
-        febre = input('O paciente teve febre [s/n]: ')
-        if febre == 's':
-            sintomas.append('febre')
-            
 
-    elif doenca == 'n':
-        print('vá para casa.')
-        break
-        
-            
-        
-    perguntar_sintoma('O paciente teve dor de cabeça [s/n]: ', 'dor de cabeça')
-    perguntar_sintoma('O paciente teve tosse [s/n]: ', 'tosse')
-    perguntar_sintoma('O paciente teve falta de Ar [s/n]: ', 'faltaDeAr')
-    perguntar_sintoma('O paciente teve manchas vermelhas na pele [s/n]: ', 'manchasVermelhas')
+    print('Bem vindo! Vamos para a nossa anmnese\nMenu:\n')
 
-            
-    if 'febre' in sintomas and 'dor de cabeça' in sintomas and 'tosse' in sintomas and 'faltaDeAr' in sintomas:
-        diagnostico_atual = 'Covid'
-        print('\nO paciente tem: \033[1;31mCovid\033[m')
-        altaOubaixa = input('\nO paciente sente \033[1;31mmuita\033[m ou \033[1;33mpouca\033[m falta de ar? ')
-        if 'muita' in altaOubaixa:
-            print('O paciente deve ser \033[1;33minternado!\033[m ')
-        elif 'pouca' in altaOubaixa:
-            repousar()
-        else:
-            print('Opção invalida')
+    print('[1] Sintomas')
+    print('[2] Intervenção')
+    print('[0] Sair.')
 
-    elif 'febre' in sintomas and 'dor de cabeça' in sintomas and 'tosse' in sintomas:
-        diagnostico_atual = 'Gripe'
-        print('\nO paciente tem: \033[1;31mGripe\033[m')
-        altaOubaixa = input('\nO paciente sente \033[1;31mmuita\033[m ou \033[1;33mpouca\033[m febre? ')
-        if 'muita' in altaOubaixa:
-            print('\033[1;31mUrgente:\033[m febre acima de \033[1;33m40°C\033[m o paciente deve ser \033[1;33minternado!\033[m ')
-        elif 'pouca' in altaOubaixa:
-            repousar()
-        else:
-            print('Opção invalida')
-
-
-    elif 'febre' in sintomas and 'dor de cabeça' in sintomas and 'manchasVermelhas' in sintomas:
-        diagnostico_atual = 'Dengue'
-        print('\nO paciente tem: \033[1;31mDengue\033[m')
-        idade = input('O paciente sente tem mais de 70 anos? [s/n] ')
-        if 's' in idade:
-            print('O paciente precisar ser \033[1;33minternado!\033[m imediatamente! ')
-        elif 'n' in idade:
-            repousar()
-        else:
-            print('Opção invalida')
-
-    else:
-        print('Sem diagnóstico conclusivo')
-
-    op = int(input('Deseja continuar [1] sim [2] não: '))
+    op = int(input('Qual opção desejada: '))
     if op == 1:
-        for i in range(len(sintomas)): 
-            diagnosticos.append(f'{i} paciente {sintomas}')
-            print(f'Diagnóstico: {diagnostico_atual}')
-        continue
+        funcoes.esquema()
+        print("\n")
+        
     elif op == 2:
-        print(f'Diagnóstico: {diagnostico_atual}')
+        print('')
+
+    elif op == 3:
+        print('\n\033[1;32m------Volte Sempre!------\033[m')
         break
+
     else:
-        print('Opção invalida')
+        print('Opção inválida.')
