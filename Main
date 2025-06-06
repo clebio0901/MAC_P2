@@ -1,22 +1,22 @@
 import funcoes
-
 while True:
 
     print('Bem vindo! Vamos para a nossa anmnese\nMenu:\n')
 
     print('[1] Sintomas')
-    print('[2] Intervenção')
+    print('[2] Sintomas Físicos')
     print('[0] Sair.')
 
-    op = int(input('Qual opção desejada: '))
+    op = int(input('\nQual opção desejada: '))
     if op == 1:
-        funcoes.esquema()
+        funcoes.doensas()
         print("\n")
         
     elif op == 2:
-        print('')
+        funcoes.fraturaÓssea()
+        
 
-    elif op == 3:
+    elif op == 0:
         print('\n\033[1;32m------Volte Sempre!------\033[m')
         break
 
