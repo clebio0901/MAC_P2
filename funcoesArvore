@@ -111,7 +111,7 @@ def fraturaOssea():
             print("Opção invalida! Tente realizar a operação novamente.")
     
     elif perguntar == 2:
-        op1 = int(input("O paciente fez o raio x do local? [1] Sim [2] Não: "))
+        op1 = int(input("O paciente fez o raio x do local? [1] Sim [2] Não: ")) #Só verifica se o paciente fez RaioX
         if op1 == 1:
             arvoreOssea.append("Osso quebrado.")
             arvoreOssea.append("Sala de cirurgia para colocar o osso no lugar e engessar.")
