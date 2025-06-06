@@ -1,24 +1,30 @@
 import funcoes
+import os
+
 while True:
+    try:    
+        print('Bem vindo! Vamos para a nossa anmnese\nMenu:\n')
+        print('[1] Sintomas')
+        print('[2] Sintomas Físicos')
+        print('[0] Sair')
 
-    print('Bem vindo! Vamos para a nossa anmnese\nMenu:\n')
+        op = int(input('\nQual opção desejada: '))
+        if op == 1:
+            funcoes.doencas()
+            print("\n")
+              
+        elif op == 2:
+            funcoes.fraturaOssea()
 
-    print('[1] Sintomas')
-    print('[2] Sintomas Físicos')
-    print('[0] Sair.')
+        elif op == 0:
+            print('\n\033[1;32m------Volte Sempre!------\033[m')
+            break
 
-    op = int(input('\nQual opção desejada: '))
-    if op == 1:
-        funcoes.doensas()
-        print("\n")
-        
-    elif op == 2:
-        funcoes.fraturaÓssea()
-        
+        else:
+            print('Opção inválida.')
 
-    elif op == 0:
-        print('\n\033[1;32m------Volte Sempre!------\033[m')
-        break
 
-    else:
-        print('Opção inválida.')
+    except ValueError:
+        os.system('cls')
+        print('-------- Digite um valor correto ---------') 
+        continue
