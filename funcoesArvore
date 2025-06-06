@@ -1,9 +1,9 @@
-#https://www.canva.com/design/DAGpUbdt6t0/urMU5C9JO0mE6JgqD8H9NA/edit?utm_content=DAGpUbdt6t0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 #Árvore de decisoes
-import os 
+import os  
 
-sintomas = ['.']
-arvoreOssea = []  
+sintomas = []
+arvoreOssea = []  #lesão física
+
 print('\n\033[1;32m------PRE-DIAGNOSTICO MEDICO------\033[m')
 
 
@@ -74,6 +74,7 @@ def doencas():
                 
             arvore(sintomas, nivel= 0 )
             print(f'\nDiagnóstico: {diagnostico_atual}')
+            sintomas.clear()
             continue
         elif op == 2:
             print('\033[1;32mARVORE GERADA\033[m\n')
@@ -85,6 +86,7 @@ def doencas():
                 
             arvore(sintomas, nivel= 0 )
             print(f'\nDiagnóstico: {diagnostico_atual}')
+            sintomas.clear()
             break
         else:
             print('Opção invalida')
@@ -111,7 +113,7 @@ def fraturaOssea():
             print("Opção invalida! Tente realizar a operação novamente.")
     
     elif perguntar == 2:
-        op1 = int(input("O paciente fez o raio x do local? [1] Sim [2] Não: ")) #Só verifica se o paciente fez RaioX
+        op1 = int(input("O paciente fez o raio x do local? [1] Sim [2] Não: "))
         if op1 == 1:
             arvoreOssea.append("Osso quebrado.")
             arvoreOssea.append("Sala de cirurgia para colocar o osso no lugar e engessar.")
@@ -138,4 +140,4 @@ def fraturaOssea():
         print(' ' * nivel + '\033[1;36m|_\033[m' + str(arvoreOssea[0]))
         R(arvoreOssea[1:], nivel + 1)
     R(arvoreOssea, nivel = 0)
-    
+   
