@@ -1,8 +1,8 @@
 #https://www.canva.com/design/DAGpUbdt6t0/urMU5C9JO0mE6JgqD8H9NA/edit?utm_content=DAGpUbdt6t0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 #Árvore de decisoes
+import os 
 
 sintomas = []
-diagnosticos = []
 arvoreOssea = []  
 print('\n\033[1;32m------PRE-DIAGNOSTICO MEDICO------\033[m')
 
@@ -16,13 +16,14 @@ def perguntar_sintoma(pergunta, sintoma, sintomas):
         sintomas.append(sintoma)
 
 
-def doensas(): 
+def doencas(): 
     while True:
         perguntar_sintoma('O paciente teve febre [s/n]:' , 'Febre' , sintomas)    
         perguntar_sintoma('O paciente teve Dor de cabeça [s/n]: ', 'Dor de cabeça', sintomas)
         perguntar_sintoma('O paciente teve tosse [s/n]: ', 'Tosse', sintomas)
         perguntar_sintoma('O paciente teve falta de Ar [s/n]: ', 'FaltaDeAr', sintomas)
         perguntar_sintoma('O paciente teve manchas vermelhas na pele [s/n]: ', 'ManchasVermelhas', sintomas)
+        os.system('cls')
 
                 
         if 'Febre' in sintomas and 'Dor de cabeça' in sintomas and 'Tosse' in sintomas and 'FaltaDeAr' in sintomas:
@@ -64,9 +65,15 @@ def doensas():
 
         op = int(input('Deseja continuar [1] sim [2] não: '))
         if op == 1:
-            for i in range(len(sintomas)): 
-                diagnosticos.append(f'{i} paciente {sintomas}')
-                print(f'Diagnóstico: {diagnostico_atual}')
+            print('\033[1;32mARVORE GERADA\033[m\n')
+            def arvore(sintomas, nivel = 0):
+                if not sintomas:
+                    return
+                print(' ' * nivel + '\033[1;36m|_\033[m' + str(sintomas[0]))
+                arvore(sintomas[1:], nivel + 1)
+                
+            arvore(sintomas, nivel= 0 )
+            print(f'\nDiagnóstico: {diagnostico_atual}')
             continue
         elif op == 2:
             print('\033[1;32mARVORE GERADA\033[m\n')
@@ -82,43 +89,49 @@ def doensas():
         else:
             print('Opção invalida')
 
-          
 
-def fraturaÓssea():
+def fraturaOssea():
     #perguntar ao paciente sobre fratura ossea(osso quebrado)
     perguntar= int(input("O paciente consegue mexer o local que sente dor? [1] Sim [2] Não: "))
-   
-    if perguntar == 1:
-        op1 = int(input("O paciente fez o raio x do local? [1] Sim [2] Não: "))
-        if op1 == 1:
-            print("\nO paciente será conduzido a sala de cirurgia para colocar o osso no lugar e engessar.\n" \
-            "O paciente deve ir ao fisioterapeuta depois que tirar o gesso do local.")
-            repousar() 
-        elif op1 == 2:
-            print("\nO paciente deve realizar o raio x e depois ser conduzido a sala de cirurgia para colocar o osso no lugar e engessar.\n" \
-            "O paciente deve ir ao fisioterapeuta depois que tirar o gesso do local.")
-            repousar()
-        else:
-            print("Opção invalida! Tente realizar a operação novamente.")
-    elif perguntar == 2: 
-        op = int(input("\nO paciente teve uma [1]Luxação ou [2]Subluxação: ")) 
+
+    if perguntar == 1: 
+        op = int(input("\nO paciente teve uma Luxação? [1]Sim ou [2]Não: ")) 
         if op == 1:
             arvoreOssea.append('Luxação')
             arvoreOssea.append("A equipe médica irá colocar o osso no lugar.")
             print('A equipe médica irá colocar o osso no lugar.')
             repousar()
+
         elif op == 2: 
-            arvoreOssea.append('Subluxação')
+            arvoreOssea.append('Sem Luxação')
             arvoreOssea.append("Vá para casa, está tudo bem!")
             print('Vá para casa, está tudo bem!')
         
         else:
             print("Opção invalida! Tente realizar a operação novamente.")
     
+    elif perguntar == 2:
+        op1 = int(input("O paciente fez o raio x do local? [1] Sim [2] Não: "))
+        if op1 == 1:
+            arvoreOssea.append("Osso quebrado.")
+            arvoreOssea.append("Sala de cirurgia para colocar o osso no lugar e engessar.")
+            arvoreOssea.append("O paciente deve ir ao fisioterapeuta depois que tirar o gesso do local.\n")
+            repousar() 
+
+        elif op1 == 2:
+            arvoreOssea.append("Osso quebrado.")
+            arvoreOssea.append("Realizar raio x, conduzido a sala de cirurgia para colocar osso no lugar e engessar.")
+            arvoreOssea.append("O paciente deve ir ao fisioterapeuta depois que tirar o gesso do local.")
+            repousar()
+
+        else:
+            print("Opção invalida! Tente realizar a operação novamente.")
+
     else:
-        print("Opção invalida! Tente realizar a operação novamente.")          
+        print("Opção invalida! Tente realizar a operação novamente.")         
 
     print('\033[1;32mARVORE GERADA\033[m\n')
+
     def R(arvoreOssea, nivel = 0):
         if not arvoreOssea:
             return
