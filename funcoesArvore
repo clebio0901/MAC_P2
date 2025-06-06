@@ -2,7 +2,7 @@
 #Árvore de decisoes
 import os 
 
-sintomas = []
+sintomas = ['.']
 arvoreOssea = []  
 print('\n\033[1;32m------PRE-DIAGNOSTICO MEDICO------\033[m')
 
